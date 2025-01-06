@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let humanScore = 0;
+        let computerScore = 0;
+
+        function playGame() {
+
+            function getComputerChoice() {
+                let random = Math.floor(Math.random() * 10);
+                if (random <= 3)
+                    return "rock";
+                else if (random > 3 && random <= 6)
+                    return "paper";
+                else
+                    return "scissors";
+            }
+
+            function playRound(humanChoice, computerChoice) {
+                let hC = humanChoice.toLowerCase();
+
+                if (computerChoice === "rock") {
+                    if (hC === "paper") {
+                        console.log("You win! Paper beats rock.");
+                        humanScore++;
+                    } else if (hC === "scissors") {
+                        console.log("You lose! Rock beats scissors.");
+                        computerScore++;
+                    } else {
+                        console.log("It's a draw!  Rock v rock.");
+                    }
+                } else if (computerChoice === "paper") {
+                    if (hC === "scissors") {
+                        console.log("You win! Scissors cut paper.");
+                        humanScore++;
+                    } else if (hC === "rock") {
+                        console.log("You lose! Paper beats rock.");
+                        computerScore++;
+                    } else {
+                        console.log("It's a draw!  Paper v paper.");
+                    }
+                } else {
+                    if (hC === "rock") {
+                        console.log("You win! Rock beats scissors.");
+                        humanScore++;
+                    } else if (hC === "paper") {
+                        console.log("You lose! Scissors cut paper.");
+                        computerScore++;
+                    } else {
+                        console.log("It's a draw!  Scissors v scissors.");
+                    }
+                }
+            }
+
+            for (let i = 0; i < 5; i++) {
+                const userChoice = prompt("Choose your move: rock, paper, or scissors?");
+                playRound(userChoice, getComputerChoice());
+                console.log("Your score: " + humanScore);
+                console.log("Computer score: " + computerScore);
+            }
+        }
+        playGame();
+    </script>
+</body>
+
+</html>
